@@ -1,0 +1,68 @@
+<template>
+    <div class="sidebar-container">
+        <!-- Background Grid Pattern -->
+        <div class="grid-pattern"></div>
+
+        <!-- Animated Floating Circles (Based on React Code) -->
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+        <div class="floating-circle circle-3"></div>
+        <div class="floating-circle circle-4"></div>
+        <div class="floating-circle circle-5"></div>
+
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            
+            <!-- Header -->
+            <div class="header-section fade-in-section">
+                <div class="partner-badge">
+                    <lightning-icon icon-name="utility:company" size="small" variant="inverse" class="white-icon-badge slds-m-right_small"></lightning-icon>
+                    <span class="partner-text">ESPACE PARTENAIRES</span>
+                </div>
+            </div>
+
+            <!-- Hero Text -->
+            <div class="hero-text-section fade-in-section">
+                <h1 class="main-title">Portail Fournisseurs</h1>
+                <p class="main-subtitle">
+                    Simplifiez vos interactions, accélérez vos opportunités.
+                </p>
+            </div>
+
+            <!-- Feature List -->
+            <div class="features-list">
+                <template for:each={features} for:item="feature">
+                    <div key={feature.id} class="feature-item fade-in-item">
+                        <div class="icon-box">
+                            <lightning-icon 
+                                icon-name={feature.icon} 
+                                size="small" 
+                                variant="inverse"
+                                class="white-icon">
+                            </lightning-icon>
+                        </div>
+                        <div class="feature-text">
+                            <h3 class="feature-title">{feature.title}</h3>
+                            <p class="feature-desc">{feature.desc}</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="footer-cta fade-in-delayed">
+                <p class="cta-prompt">Pas encore inscrit ?</p>
+                <div class="cta-buttons">
+                    <a href="/portal/appel-offres/Appel_Offres__c/Default" class="btn-glass">
+                        <lightning-icon icon-name="utility:page" size="x-small" variant="inverse" class="white-icon-btn slds-m-right_x-small"></lightning-icon>
+                        Consulter les Appels d'Offres
+                    </a>
+                    <a href="javascript:void(0);" onclick={handleBecomeSupplier} class="btn-primary">
+                        Devenir fournisseur
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

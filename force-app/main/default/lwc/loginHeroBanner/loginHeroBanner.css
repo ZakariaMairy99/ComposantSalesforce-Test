@@ -1,0 +1,327 @@
+:host {
+    height: 100%;
+    display: block;
+    min-height: 580px;
+}
+
+.sidebar-container {
+    height: 100%;
+    position: relative;
+    background: linear-gradient(120deg, #C20A32 0%, #8c0222 40%, #3d0a14 100%);
+    color: white;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* Background Grid Pattern */
+.grid-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+}
+
+/* 
+   Animated Follow-Along Circles vs React Code 
+   Translating Tailwind arbitrary values and keyframes to pure CSS
+*/
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Circle 1: Top-Right large */
+.circle-1 {
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(4px);
+    top: -10%;
+    right: -15%;
+    animation: float1 20s ease-in-out infinite;
+}
+
+/* Circle 2: Bottom-Left huge */
+.circle-2 {
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(4px);
+    bottom: -20%;
+    left: -20%;
+    animation: float2 25s ease-in-out infinite;
+}
+
+/* Circle 3: Middle-Right accent */
+.circle-3 {
+    width: 192px; /* 48 * 4 */
+    height: 192px;
+    background: rgba(255, 255, 255, 0.04);
+    filter: blur(4px);
+    top: 40%;
+    right: 5%;
+    animation: float3 18s ease-in-out infinite;
+}
+
+/* Circle 4: Top-Left small white */
+.circle-4 {
+    width: 128px; /* 32 * 4 */
+    height: 128px;
+    background: rgba(255, 255, 255, 0.05);
+    top: 20%;
+    left: 10%;
+    animation: float4 22s ease-in-out infinite;
+}
+
+/* Circle 5: Bottom-Right tiny accent */
+.circle-5 {
+    width: 96px; /* 24 * 4 */
+    height: 96px;
+    background: rgba(255, 255, 255, 0.03);
+    bottom: 25%;
+    right: 20%;
+    animation: float5 15s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-30px, 40px) scale(1.05); }
+    50% { transform: translate(-50px, 20px) scale(1); }
+    75% { transform: translate(-20px, 50px) scale(0.95); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(40px, -30px) scale(0.95); }
+    50% { transform: translate(60px, -50px) scale(1.05); }
+    75% { transform: translate(30px, -20px) scale(1); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-40px, 30px); }
+    66% { transform: translate(20px, -40px); }
+}
+
+@keyframes float4 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(50px, 30px) rotate(180deg); }
+}
+
+@keyframes float5 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(1.1); }
+    50% { transform: translate(-20px, -40px) scale(1); }
+    75% { transform: translate(-30px, 20px) scale(0.9); }
+}
+
+/* Content Layout */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header Badge */
+.partner-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.partner-text {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.white-icon-badge {
+    --slds-c-icon-color-foreground: rgba(255, 255, 255, 0.8);
+}
+
+/* Main Titles */
+.main-title {
+    font-size: 2.25rem; /* increased from 2rem */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.main-subtitle {
+    font-size: 1rem; /* kept as 1rem */
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.625;
+    margin-bottom: 2rem; /* increased from 1.5rem */
+    max-width: 450px;
+}
+
+/* Features */
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* increased from 1rem for more breathing room */
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    /* Animation delays would be handled via nth-child logic inside CSS ideally */
+}
+
+.icon-box {
+    width: 3rem; /* increased from 2.5rem */
+    height: 3rem; /* increased from 2.5rem */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.white-icon {
+    --slds-c-icon-color-foreground: white;
+    --slds-c-icon-color-foreground-default: white;
+}
+
+.feature-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.feature-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+/* Footer CTA */
+.footer-cta {
+    margin-top: auto; /* changed from 1rem to auto for space distribution */
+    padding-top: 2rem; /* increased from 1.5rem */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-prompt {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Augmentation de la spécificité via le parent .cta-buttons */
+.cta-buttons a.btn-glass,
+.cta-buttons a.btn-glass:link,
+.cta-buttons a.btn-glass:visited,
+.cta-buttons a.btn-glass:active,
+.cta-buttons a.btn-glass:focus {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    background: transparent;
+    
+    /* FORCE LE BLANC CONTRE LE THEME */
+    border: 1px solid white !important;
+    color: white !important; 
+    text-decoration: none !important;
+    
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Etat Survol */
+.cta-buttons a.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.24) !important;
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Force l'icône à suivre la couleur du texte (currentColor) */
+.cta-buttons a.btn-glass .white-icon-btn {
+    --slds-c-icon-color-foreground: currentColor !important;
+}
+
+.white-icon-btn {
+    --slds-c-icon-color-foreground: white;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    background-color: #C20A32 !important; /* RAM Red */
+    color: white !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none !important;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #A0082A !important; /* RAM Red Hover */
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.btn-primary:active {
+    background-color: #8c0222 !important;
+    transform: translateY(1px);
+}
+
+/* Animations for Content Entry */
+.fade-in-section {
+    animation: fadeIn 0.7s ease-out forwards;
+}
+
+.features-list .feature-item:nth-child(1) { animation: slideRight 0.5s ease-out 0.2s backwards; }
+.features-list .feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 0.4s backwards; }
+.features-list .feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 0.6s backwards; }
+
+.fade-in-delayed {
+    animation: fadeIn 0.7s ease-out 0.7s backwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 1024px) {
+    .main-title { font-size: 2.25rem; }
+    .sidebar-container { padding: 40px 32px; }
+}
